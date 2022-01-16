@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://autoload/GlobalValues.gd" type="Script" id=1]
+[ext_resource path="res://autoload/Music.gd" type="Script" id=3]
+
+[node name="GlobalValues" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+volume_db = -10.0
+bus = "Music"
+script = ExtResource( 3 )
+music_path = "res://assets/music.mp3"

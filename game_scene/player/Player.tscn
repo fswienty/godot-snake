@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://game_scene/player/Player.gd" type="Script" id=1]
+[ext_resource path="res://sprites/snake_head.png" type="Texture" id=2]
+[ext_resource path="res://game_scene/player/BodyPart.gd" type="Script" id=3]
+[ext_resource path="res://game_scene/player/BodyPart.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 11.9228
+
+[node name="Player" type="Node2D"]
+script = ExtResource( 1 )
+BodyPart = ExtResource( 4 )
+
+[node name="Head" type="Area2D" parent="."]
+self_modulate = Color( 0.392157, 0.392157, 0.392157, 1 )
+monitorable = false
+gravity_vec = Vector2( 0, 0 )
+gravity = 0.0
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Head"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
+shape = SubResource( 1 )
+
+[node name="PositionTween" type="Tween" parent="Head"]
+
+[node name="RotationTween" type="Tween" parent="Head"]
+
+[connection signal="area_entered" from="Head" to="." method="_on_Head_area_entered"]
